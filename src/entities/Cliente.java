@@ -12,7 +12,7 @@ public class Cliente {
     private String nome;
     private String telefone;
     private String cpf;
-    private LocalDateTime dataCadastro;
+    private String dataCadastro;
     
     // Construtores
     public Cliente() {}
@@ -23,6 +23,14 @@ public class Cliente {
         this.nome = nome;
         this.telefone = telefone;
         this.cpf = cpf;
+    }
+
+     public Cliente(int id, String email,  String nome, String telefone, String cpf, String dataCadastro) {
+        this.email = email;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.cpf = cpf;
+        this.dataCadastro = dataCadastro;
     }
     
     // Getters e Setters
