@@ -82,11 +82,11 @@ public class Cliente {
         this.cpf = cpf;
     }
     
-    public LocalDateTime getDataCadastro() {
+    public String getDataCadastro() {
         return dataCadastro;
     }
     
-    public void setDataCadastro(LocalDateTime dataCadastro) {
+    public void setDataCadastro(String dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
     
