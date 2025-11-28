@@ -21,7 +21,8 @@ public class Aluguel {
     public enum StatusAluguel {
         PENDENTE,
         APROVADO,
-        REJEITADO
+        REJEITADO,
+        DEVOLVIDO
     }
     
     // Construtores
