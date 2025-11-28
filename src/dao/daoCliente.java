@@ -28,10 +28,10 @@ public class daoCliente {
             while (rs.next()) {
                 Cliente cliente = new Cliente(
                         rs.getLong("id"),
+                        rs.getString("email"),
                         rs.getString("nome"),
                         rs.getString("telefone"),
                         rs.getString("cpf"),
-                        rs.getString("email"),
                         GlobalBrDate.formatTimestamp(rs.getTimestamp("data_cadastro")));
 
                 clientes.add(cliente);
@@ -59,10 +59,10 @@ public class daoCliente {
                 if (rs.next()) {
                     cliente = new Cliente(
                             rs.getLong("id"),
+                            rs.getString("email"),
                             rs.getString("nome"),
                             rs.getString("telefone"),
                             rs.getString("cpf"),
-                            rs.getString("email"),
                             GlobalBrDate.formatTimestamp(rs.getTimestamp("data_cadastro")));
                 }
             }
@@ -89,10 +89,10 @@ public class daoCliente {
                 if (rs.next()) {
                     cliente = new Cliente(
                             rs.getLong("id"),
+                            rs.getString("email"),
                             rs.getString("nome"),
                             rs.getString("telefone"),
                             rs.getString("cpf"),
-                            rs.getString("email"),
                             GlobalBrDate.formatTimestamp(rs.getTimestamp("data_cadastro")));
                 }
             }
@@ -120,10 +120,10 @@ public class daoCliente {
                 if (rs.next()) {
                     cliente = new Cliente(
                             rs.getLong("id"),
+                            rs.getString("email"),
                             rs.getString("nome"),
                             rs.getString("telefone"),
                             rs.getString("cpf"),
-                            rs.getString("email"),
                             GlobalBrDate.formatTimestamp(rs.getTimestamp("data_cadastro")));
                 }
             }
@@ -151,10 +151,10 @@ public class daoCliente {
                 if (rs.next()) {
                     cliente = new Cliente(
                             rs.getLong("id"),
+                            rs.getString("email"),
                             rs.getString("nome"),
                             rs.getString("telefone"),
                             rs.getString("cpf"),
-                            rs.getString("email"),
                             GlobalBrDate.formatTimestamp(rs.getTimestamp("data_cadastro")));
                 }
             }
@@ -167,14 +167,14 @@ public class daoCliente {
     }
 
     // ------------------------------------
-    // CREATE (CORRIGIDO)
+    // CREATE 
     // ------------------------------------
     public void inserir(Cliente cliente) {
         String sql = "INSERT INTO clientes (nome, email, cpf, telefone, senha, data_cadastro) VALUES (?,?,?,?,?,?)";
 
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
+                    System.out.println(cliente);
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEmail());
             stmt.setString(3, cliente.getCpf());
@@ -200,7 +200,6 @@ public class daoCliente {
     // ------------------------------------
     public void atualizar(Cliente cliente) {
         String sql = "UPDATE clientes SET nome = ?, telefone = ?, email = ? WHERE id = ?";
-
         try (Connection conn = ConnectionFactory.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 

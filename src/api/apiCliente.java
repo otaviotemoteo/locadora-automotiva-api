@@ -78,7 +78,6 @@ public class apiCliente {
         try {
           Cliente cliente = gson.fromJson(request.body(), Cliente.class);
 
-          // Validações com Rod
           Rod.email(cliente.getEmail(), false);
           Rod.string(cliente.getSenha(), "Senha", false, 3, 255);
           Rod.string(cliente.getNome(), "Nome", false, 3, 255);
@@ -137,12 +136,10 @@ public class apiCliente {
 
           Cliente atualizado = gson.fromJson(request.body(), Cliente.class);
 
-          // Validações
           Rod.email(atualizado.getEmail(), true);
           Rod.string(atualizado.getNome(), "Nome", true, 3, 255);
           Rod.telefone(atualizado.getTelefone(), true);
 
-          // Atualiza somente campos enviados
           if (atualizado.getEmail() != null) {
             existente.setEmail(atualizado.getEmail());
           }
