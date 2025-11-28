@@ -167,7 +167,7 @@ public class daoAluguel {
     // Verificar se cliente tem aluguel ativo
     // ------------------------------------
     public boolean clienteTemAluguelAtivo(Long clienteId) {
-        String sql = "SELECT COUNT(*) FROM alugueis WHERE cliente_id = ? AND status IN ('AGUARDANDO_APROVACAO', 'APROVADO')";
+        String sql = "SELECT COUNT(*) FROM alugueis WHERE cliente_id = ? AND status IN ('PENDENTE', 'APROVADO')";
         
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -190,7 +190,7 @@ public class daoAluguel {
     // Verificar se carro está alugado
     // ------------------------------------
     public boolean carroEstaAlugado(Long carroId) {
-        String sql = "SELECT COUNT(*) FROM alugueis WHERE carro_id = ? AND status IN ('AGUARDANDO_APROVACAO', 'APROVADO')";
+        String sql = "SELECT COUNT(*) FROM alugueis WHERE carro_id = ? AND status IN ('PENDENTE', 'APROVADO')";
         
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -304,7 +304,7 @@ public class daoAluguel {
                 diasAtraso = (int) java.time.temporal.ChronoUnit.DAYS.between(dataFim, hoje);
             }
 
-            stmt.setString(1, StatusAluguel.APROVADO.name());
+            stmt.setString(1, StatusAluguel.DEVOLVIDO.name());
             stmt.setDate(2, Date.valueOf(hoje));
             stmt.setInt(3, diasAtraso);
             stmt.setLong(4, id);
