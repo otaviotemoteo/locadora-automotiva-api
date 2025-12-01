@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Carro;
+import entities.Carro.StatusCarro;
 import util.ConnectionFactory;
 import util.GlobalBrDate;
 
@@ -83,4 +84,24 @@ public class daoCarro {
 
     return carro;
   }
+
+  // ------------------------------------
+// UPDATE - Atualizar status do carro
+// ------------------------------------
+public void atualizarStatus(Long id, StatusCarro novoStatus) {
+    String sql = "UPDATE carros SET status = ? WHERE id = ?";
+    
+    try (Connection conn = ConnectionFactory.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        
+        stmt.setString(1, novoStatus.name());
+        stmt.setLong(2, id);
+        
+        stmt.executeUpdate();
+        
+    } catch (SQLException e) {
+        System.err.println("Erro ao atualizar status do carro ID: " + id + ". Detalhes: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
 }

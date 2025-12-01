@@ -87,9 +87,7 @@ public class Aluguel {
     }
     
     public void setDataInicio(String dataInicio) {
-        this.dataInicio = dataInicio;
-        LocalDate dataInicioLD = LocalDate.parse(dataInicio);
-        this.dataFimPrevista = dataInicioLD.plusDays(5).toString();
+    this.dataInicio = dataInicio;
     }
     
     public String getDataFimPrevista() {

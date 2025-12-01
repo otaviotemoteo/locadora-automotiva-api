@@ -11,14 +11,14 @@ public abstract class GlobalBrDate {
         if (timestamp == null) return null;
 
         LocalDateTime localDateTime = timestamp.toLocalDateTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         return localDateTime.format(formatter);
     }
 
     public static String formatLocalDate(LocalDate localDate) {
         if (localDate == null) return null;
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return localDate.format(formatter);
     }
 
